@@ -4,10 +4,9 @@ import numpy as np
 np.random.seed(0)
 dataframe = pd.read_csv("data_sample_BR17.csv")
 timeframeh = 4
-timeframem = timeframeh
-forecast_deep = 3 * timeframem
+forecast_deep = 3 * timeframeh
 nb_obs_day = 1
-lookback = 24 * timeframem * nb_obs_day
+lookback = 24 * timeframeh * nb_obs_day
 tt_ratio = 0.7
 dataset_close = dataframe['Close'].round(decimals=4)
 dataset_close = pd.to_numeric(dataset_close, downcast='float')
@@ -23,7 +22,7 @@ def create_dataset(dataset):
         dX.append(a2)
 
         # b = dataset[i + 1:i + forecast_deep].values
-        b = dataset[i + 2*forecast_deep-1]
+        b = dataset[i + forecast_deep-1]
         b2 = np.round(np.log(b) - np.log(dataset_close.loc[i]), decimals=6)
         b2 = np.where(b2 >= 0, 1, b2)
         b2 = np.where(b2 < 0, 0, b2)
