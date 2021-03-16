@@ -3,9 +3,9 @@ import numpy as np
 
 np.random.seed(0)
 dataframe = pd.read_csv("data_sample_BR17.csv")
-timeframeh = 4
-forecast_deep = 3 * timeframeh
-nb_obs_day = 1
+timeframeh = 1
+forecast_deep = 4 * timeframeh
+nb_obs_day = 2
 lookback = 24 * timeframeh * nb_obs_day
 tt_ratio = 0.7
 dataset_close = dataframe['Close'].round(decimals=4)
